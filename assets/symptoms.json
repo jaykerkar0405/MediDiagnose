@@ -1,0 +1,247 @@
+[
+  {
+    "symptom": "Cough",
+    "category": "Respiratory",
+    "related_symptoms": [
+      "Sore Throat",
+      "Wheezing",
+      "Chest Tightness",
+      "Shortness of Breath"
+    ]
+  },
+  {
+    "symptom": "Sore Throat",
+    "category": "Respiratory",
+    "related_symptoms": ["Cough", "Fever", "Hoarseness"]
+  },
+  {
+    "symptom": "Fever",
+    "category": "General",
+    "related_symptoms": ["Chills", "Body Aches", "Fatigue", "Sweating"]
+  },
+  {
+    "symptom": "Shortness of Breath",
+    "category": "Respiratory",
+    "related_symptoms": ["Wheezing", "Chest Pain", "Cough", "Fatigue"]
+  },
+  {
+    "symptom": "Chest Pain",
+    "category": "Cardiovascular",
+    "related_symptoms": [
+      "Shortness of Breath",
+      "Dizziness",
+      "Nausea",
+      "Palpitations"
+    ]
+  },
+  {
+    "symptom": "Wheezing",
+    "category": "Respiratory",
+    "related_symptoms": ["Cough", "Shortness of Breath", "Chest Tightness"]
+  },
+  {
+    "symptom": "Palpitations",
+    "category": "Cardiovascular",
+    "related_symptoms": ["Dizziness", "Chest Pain", "Anxiety", "Sweating"]
+  },
+  {
+    "symptom": "Fatigue",
+    "category": "General",
+    "related_symptoms": ["Fever", "Body Aches", "Headache", "Weakness"]
+  },
+  {
+    "symptom": "Headache",
+    "category": "Neurological",
+    "related_symptoms": [
+      "Fatigue",
+      "Nausea",
+      "Dizziness",
+      "Sensitivity to Light"
+    ]
+  },
+  {
+    "symptom": "Dizziness",
+    "category": "Neurological",
+    "related_symptoms": ["Headache", "Nausea", "Palpitations", "Blurred Vision"]
+  },
+  {
+    "symptom": "Nausea",
+    "category": "Gastrointestinal",
+    "related_symptoms": ["Vomiting", "Dizziness", "Abdominal Pain", "Diarrhea"]
+  },
+  {
+    "symptom": "Vomiting",
+    "category": "Gastrointestinal",
+    "related_symptoms": ["Nausea", "Abdominal Pain", "Diarrhea", "Headache"]
+  },
+  {
+    "symptom": "Diarrhea",
+    "category": "Gastrointestinal",
+    "related_symptoms": ["Nausea", "Abdominal Pain", "Vomiting", "Dehydration"]
+  },
+  {
+    "symptom": "Abdominal Pain",
+    "category": "Gastrointestinal",
+    "related_symptoms": ["Nausea", "Vomiting", "Diarrhea", "Bloating"]
+  },
+  {
+    "symptom": "Back Pain",
+    "category": "Musculoskeletal",
+    "related_symptoms": ["Muscle Stiffness", "Fatigue", "Leg Pain", "Numbness"]
+  },
+  {
+    "symptom": "Muscle Stiffness",
+    "category": "Musculoskeletal",
+    "related_symptoms": [
+      "Back Pain",
+      "Joint Pain",
+      "Fatigue",
+      "Limited Mobility"
+    ]
+  },
+  {
+    "symptom": "Joint Pain",
+    "category": "Musculoskeletal",
+    "related_symptoms": ["Swelling", "Muscle Stiffness", "Fatigue", "Weakness"]
+  },
+  {
+    "symptom": "Swelling",
+    "category": "Musculoskeletal",
+    "related_symptoms": ["Joint Pain", "Redness", "Warmth", "Limited Mobility"]
+  },
+  {
+    "symptom": "Rash",
+    "category": "Dermatological",
+    "related_symptoms": ["Itching", "Redness", "Swelling", "Blisters"]
+  },
+  {
+    "symptom": "Itching",
+    "category": "Dermatological",
+    "related_symptoms": ["Rash", "Redness", "Dry Skin", "Swelling"]
+  },
+  {
+    "symptom": "Dry Skin",
+    "category": "Dermatological",
+    "related_symptoms": ["Itching", "Cracking", "Redness", "Flaking"]
+  },
+  {
+    "symptom": "Redness",
+    "category": "Dermatological",
+    "related_symptoms": ["Swelling", "Rash", "Itching", "Blisters"]
+  },
+  {
+    "symptom": "Blisters",
+    "category": "Dermatological",
+    "related_symptoms": ["Rash", "Redness", "Itching", "Swelling"]
+  },
+  {
+    "symptom": "Runny Nose",
+    "category": "Respiratory",
+    "related_symptoms": ["Sneezing", "Nasal Congestion", "Sore Throat", "Cough"]
+  },
+  {
+    "symptom": "Nasal Congestion",
+    "category": "Respiratory",
+    "related_symptoms": ["Runny Nose", "Sneezing", "Sore Throat", "Headache"]
+  },
+  {
+    "symptom": "Sneezing",
+    "category": "Respiratory",
+    "related_symptoms": [
+      "Runny Nose",
+      "Nasal Congestion",
+      "Sore Throat",
+      "Itchy Eyes"
+    ]
+  },
+  {
+    "symptom": "Itchy Eyes",
+    "category": "Ophthalmological",
+    "related_symptoms": ["Red Eyes", "Watery Eyes", "Sneezing", "Runny Nose"]
+  },
+  {
+    "symptom": "Red Eyes",
+    "category": "Ophthalmological",
+    "related_symptoms": [
+      "Itchy Eyes",
+      "Watery Eyes",
+      "Blurred Vision",
+      "Eye Pain"
+    ]
+  },
+  {
+    "symptom": "Blurred Vision",
+    "category": "Ophthalmological",
+    "related_symptoms": ["Dizziness", "Headache", "Red Eyes", "Eye Pain"]
+  },
+  {
+    "symptom": "Eye Pain",
+    "category": "Ophthalmological",
+    "related_symptoms": [
+      "Blurred Vision",
+      "Red Eyes",
+      "Headache",
+      "Sensitivity to Light"
+    ]
+  },
+  {
+    "symptom": "Sensitivity to Light",
+    "category": "Neurological",
+    "related_symptoms": ["Headache", "Eye Pain", "Blurred Vision", "Nausea"]
+  },
+  {
+    "symptom": "Leg Pain",
+    "category": "Musculoskeletal",
+    "related_symptoms": ["Back Pain", "Numbness", "Swelling", "Cramping"]
+  },
+  {
+    "symptom": "Numbness",
+    "category": "Neurological",
+    "related_symptoms": ["Leg Pain", "Tingling", "Weakness", "Back Pain"]
+  },
+  {
+    "symptom": "Tingling",
+    "category": "Neurological",
+    "related_symptoms": ["Numbness", "Weakness", "Dizziness", "Headache"]
+  },
+  {
+    "symptom": "Weakness",
+    "category": "General",
+    "related_symptoms": ["Fatigue", "Tingling", "Numbness", "Dizziness"]
+  },
+  {
+    "symptom": "Chills",
+    "category": "General",
+    "related_symptoms": ["Fever", "Body Aches", "Sweating", "Fatigue"]
+  },
+  {
+    "symptom": "Body Aches",
+    "category": "General",
+    "related_symptoms": ["Fever", "Chills", "Fatigue", "Headache"]
+  },
+  {
+    "symptom": "Sweating",
+    "category": "General",
+    "related_symptoms": ["Fever", "Chills", "Palpitations", "Fatigue"]
+  },
+  {
+    "symptom": "Hoarseness",
+    "category": "Respiratory",
+    "related_symptoms": [
+      "Sore Throat",
+      "Cough",
+      "Runny Nose",
+      "Nasal Congestion"
+    ]
+  },
+  {
+    "symptom": "Chest Tightness",
+    "category": "Respiratory",
+    "related_symptoms": [
+      "Wheezing",
+      "Cough",
+      "Shortness of Breath",
+      "Chest Pain"
+    ]
+  }
+]

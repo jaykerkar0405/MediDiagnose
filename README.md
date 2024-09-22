@@ -1,29 +1,79 @@
-# MediDiagnose
+![Banner](https://res.cloudinary.com/bytewise0405/image/upload/v1726917049/MediDiagnose/banner_lhvhjm.png)
 
-MediDiagnose is an AI-powered symptom checker that allows users to select symptoms and receive potential disease diagnoses along with treatment suggestions.
+## Badges
 
-## Features
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/jaykerkar0405/MediDiagnose/blob/main/LICENSE)
 
-- AI-driven analysis
-- Symptom-based disease diagnosis
-- Treatment suggestions based on symptoms
+# 🩺 MediDiagnose
 
-## Prerequisites
+MediDiagnose is an AI-powered symptom checker that helps users receive potential disease diagnoses and treatment suggestions based on selected symptoms.
 
-Before compiling, ensure you have the following libraries installed:
+## ✨ Features
 
-- [libcurl](__https://curl.se/libcurl/__)
-- [cJSON](__https://github.com/DaveGamble/cJSON__)
+- 🤖 AI-driven analysis for precise symptom interpretation
+- 💊 Personalized treatment suggestions based on matched conditions
+- 🧾 Symptom-based disease detection powered by advanced algorithms
 
-## Compile Command
+## 🛠️ Prerequisites
+
+Before compiling and running the application, ensure you have the following prerequisites:
+
+- **libcurl**: libcurl installation guide
+- **cJSON**: cJSON installation guide
+- **GCC compiler** installed for C-based applications.
+
+## ⚙️ Compilation
+
+Compile MediDiagnose with the following command:
 
 ```bash
-gcc main.c ./components/splash_screen/splash_screen.c ./modules/utils/utils.c ./components/exit_screen/exit_screen.c ./components/authentication/authentication.c ./modules/authentication/authentication.c ./components/home/home.c -o medi_diagnose.exe -I<path_to_libcurl_include> -L<path_to_libcurl_lib> -I<path_to_cjson_include> -L<path_to_cjson_lib> -lcurl -lcjson
+gcc main.c ./components/splash_screen/splash_screen.c ./modules/utils/utils.c ./components/exit_screen/exit_screen.c ./components/authentication/authentication.c ./modules/authentication/authentication.c ./components/home/home.c -o MediDiagnose.exe -I<path_to_libcurl_include> -L<path_to_libcurl_lib> -I<path_to_cjson_include> -L<path_to_cjson_lib> -lcurl -lcjson
 ```
 
+## ▶️ Running the Application
 
-## Run Command
+Once compiled, run MediDiagnose with:
 
 ```bash
-./medi_diagnose.exe
+./MediDiagnose.exe
 ```
+
+## 🎥 Demo Video
+
+Check out our demo video to see MediDiagnose in action:
+
+[MediDiagnose Demonstration](https://res.cloudinary.com/bytewise0405/video/upload/v1726921150/MediDiagnose/MediDiagnose_Demonstration_ehwqsx.mp4)
+
+## Authors
+
+- Afnan Kazi | [@Afnankazi](https://github.com/Afnankazi)
+- Jay Kerkar | [@jaykerkar0405](https://github.com/jaykerkar0405)
+- Chaitanya Kelkar | [@CHAITANYASKELKAR](https://github.com/CHAITANYASKELKAR)
+
+## 🍴 How to Contribute
+
+Contributions are welcome! Follow these steps:
+
+1. Fork this repository by clicking the "Fork" button on the top right of the repository page.
+2. Clone your forked repository:
+   ```bash
+   git clone https://github.com/<your-username>/MediDiagnose.git
+   ```
+3. Make your changes and test them thoroughly.
+4. Submit a pull request with a description of your changes.
+
+## 🛠️ Tech Stack
+
+- **Libraries**: libcurl, cJSON
+- **Programming Language**: C
+- **Frameworks**: Custom AI logic, Data Structures
+
+## 📚 References
+
+- [AI Documentation](https://research.facebook.com/file/1574548786327032/LLaMA--Open-and-Efficient-Foundation-Language-Models.pdf)
+- [libcurl Documentation](https://curl.se/libcurl/)
+- [cJSON Documentation](https://github.com/DaveGamble/cJSON)
+
+## Feedback
+
+If you have any feedback, please reach out to us at bytewise0405@gmail.com

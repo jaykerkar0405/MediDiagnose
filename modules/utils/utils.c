@@ -1,5 +1,8 @@
+#include <time.h>
 #include "utils.h"
+#include "cJSON.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <stddef.h>
 #include <windows.h>
 #include "../../constants/constants.h"
@@ -17,20 +20,12 @@ void set_text_color(int color)
     SetConsoleTextAttribute(h_console, color);
 }
 
-// Function to extract username from email
-char *extract_username(const char *email)
+// Function to get current date string
+void get_date_string(char *date_str, size_t size)
 {
-    int i = 0;
-    static char username[255];
-
-    while (email[i] != '@' && email[i] != '\0')
-    {
-        username[i] = email[i];
-        i++;
-    }
-
-    username[i] = '\0';
-    return username;
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+    strftime(date_str, size, "%B %d, %Y", &tm);
 }
 
 // Function to print data received from the server response

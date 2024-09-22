@@ -1,6 +1,7 @@
 #include <cJSON.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include <string.h>
 #include <windows.h>
 #include <stdbool.h>
@@ -39,7 +40,7 @@ bool authenticate_user(const char *email, const char *password, User *user)
     chunk.memory = malloc(1);
 
     char url[256];
-    snprintf(url, sizeof(url), "%s" FETCH_USER_ENDPOINT, API_URL, email);
+    snprintf(url, sizeof(url), "%s" FETCH_USER_ENDPOINT, SUPABASE_API_URL, email);
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl = curl_easy_init();
@@ -49,7 +50,7 @@ bool authenticate_user(const char *email, const char *password, User *user)
         struct curl_slist *headers = NULL;
         curl_easy_setopt(curl, CURLOPT_URL, url);
 
-        headers = curl_slist_append(headers, "apikey: " API_KEY);
+        headers = curl_slist_append(headers, "apikey: " SUPABASE_API_KEY);
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
 
         curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
@@ -83,6 +84,7 @@ bool authenticate_user(const char *email, const char *password, User *user)
                 if (object != NULL)
                 {
                     cJSON *id = cJSON_GetObjectItem(object, "id");
+                    cJSON *name = cJSON_GetObjectItem(object, "name");
                     cJSON *created_at = cJSON_GetObjectItem(object, "created_at");
                     cJSON *fetched_password = cJSON_GetObjectItem(object, "password");
 
@@ -92,6 +94,7 @@ bool authenticate_user(const char *email, const char *password, User *user)
                         {
                             user->id = id->valuestring;
                             user->email = (char *)email;
+                            user->name = name->valuestring;
                             user->created_at = created_at->valuestring;
 
                             return true;
@@ -112,7 +115,7 @@ bool authenticate_user(const char *email, const char *password, User *user)
 }
 
 // Function to register the user
-bool register_user(const char *email, const char *password, User *user)
+bool register_user(const char *name, const char *email, const char *password, User *user)
 {
     CURL *curl;
     Memory chunk;
@@ -122,7 +125,7 @@ bool register_user(const char *email, const char *password, User *user)
     chunk.memory = malloc(1);
 
     char url[256];
-    snprintf(url, sizeof(url), "%s" CREATE_USER_ENDPOINT, API_URL);
+    snprintf(url, sizeof(url), "%s" CREATE_USER_ENDPOINT, SUPABASE_API_URL);
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl = curl_easy_init();
@@ -133,11 +136,11 @@ bool register_user(const char *email, const char *password, User *user)
         struct curl_slist *headers = NULL;
 
         snprintf(post_fields, sizeof(post_fields),
-                 "{\"password\": \"%s\", \"email\": \"%s\"}",
-                 password, email);
+                 "{\"password\": \"%s\", \"email\": \"%s\", \"name\": \"%s\"}",
+                 password, email, name);
 
         curl_easy_setopt(curl, CURLOPT_URL, url);
-        headers = curl_slist_append(headers, "apikey: " API_KEY);
+        headers = curl_slist_append(headers, "apikey: " SUPABASE_API_KEY);
         headers = curl_slist_append(headers, "Content-Type: application/json");
 
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
@@ -157,6 +160,7 @@ bool register_user(const char *email, const char *password, User *user)
         }
 
         user->id = "Not Assigned";
+        user->name = (char *)name;
         user->email = (char *)email;
         user->created_at = "To Be Set";
 

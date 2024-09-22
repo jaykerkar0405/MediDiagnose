@@ -21,9 +21,9 @@ void login_screen(bool is_error, User *user)
     char email[255];
     char password[255];
 
-    printf(BLUE_COLOR BOLD "    +-------------------------------+\n" RESET_COLOR);
-    printf(BLUE_COLOR BOLD "    | " RESET_COLOR "Login" BLUE_COLOR BOLD "                         |\n" RESET_COLOR);
-    printf(BLUE_COLOR BOLD "    +-------------------------------+\n" RESET_COLOR);
+    printf(BLUE_COLOR BOLD "    +-----------------------------------------+\n" RESET_COLOR);
+    printf(BLUE_COLOR BOLD "    | " RESET_COLOR "Login" BLUE_COLOR BOLD "                                   |\n" RESET_COLOR);
+    printf(BLUE_COLOR BOLD "    +-----------------------------------------+\n" RESET_COLOR);
 
     printf(BLUE_COLOR BOLD "    | " GREEN_COLOR " Email: ");
     scanf("%s", email);
@@ -54,7 +54,7 @@ void login_screen(bool is_error, User *user)
     }
 
     password[i] = '\0';
-    printf(BLUE_COLOR BOLD "\n    +-------------------------------+\n\n" RESET_COLOR);
+    printf(BLUE_COLOR BOLD "\n    +-----------------------------------------+\n\n" RESET_COLOR);
 
     char hex_str[9];
     uint32_t hash = hash_password(password);
@@ -84,15 +84,26 @@ void registration_screen(bool is_error, User *user)
         printf(YELLOW_COLOR "    Registration failed: Please try again.\n\n" RESET_COLOR);
 
     int i;
+    char name[255];
     char email[255];
     char password[255];
 
-    printf(BLUE_COLOR BOLD "    +-------------------------------+\n" RESET_COLOR);
-    printf(BLUE_COLOR BOLD "    | " RESET_COLOR "Register" BLUE_COLOR BOLD "                      |\n" RESET_COLOR);
-    printf(BLUE_COLOR BOLD "    +-------------------------------+\n" RESET_COLOR);
+    printf(BLUE_COLOR BOLD "    +-----------------------------------------+\n" RESET_COLOR);
+    printf(BLUE_COLOR BOLD "    | " RESET_COLOR "Register" BLUE_COLOR BOLD "                                |\n" RESET_COLOR);
+    printf(BLUE_COLOR BOLD "    +-----------------------------------------+\n" RESET_COLOR);
 
     printf(BLUE_COLOR BOLD "    | " GREEN_COLOR " Email: ");
     scanf("%s", email);
+
+    getchar();
+
+    printf(BLUE_COLOR BOLD "    | " GREEN_COLOR " Name: ");
+    fgets(name, sizeof(name), stdin);
+
+    if ((strlen(name) > 0) && (name[strlen(name) - 1] == '\n'))
+    {
+        name[strlen(name) - 1] = '\0';
+    }
 
     printf(BLUE_COLOR BOLD "    | " GREEN_COLOR " Password: ");
 
@@ -120,13 +131,13 @@ void registration_screen(bool is_error, User *user)
     }
 
     password[i] = '\0';
-    printf(BLUE_COLOR BOLD "\n    +-------------------------------+\n\n" RESET_COLOR);
+    printf(BLUE_COLOR BOLD "\n    +-----------------------------------------+\n\n" RESET_COLOR);
 
     char hex_str[9];
     uint32_t hash = hash_password(password);
     hash_to_hex(hash, hex_str);
 
-    bool registration_successful = register_user(email, hex_str, user);
+    bool registration_successful = register_user(name, email, hex_str, user);
 
     loading_spinner("Creating your account, please wait");
 
