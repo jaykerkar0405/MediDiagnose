@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <windows.h>
 #include "../../modules/utils/utils.h"
 #include "../../constants/constants.h"
 

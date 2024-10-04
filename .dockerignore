@@ -1,0 +1,37 @@
+# Ignore object and binary files
+*.o
+*.out
+*.exe
+
+# Ignore temporary and swap files
+*~
+*.swp
+
+# Ignore build directories
+obj/
+bin/
+build/
+
+# Ignore dependency libraries if dynamically linked
+*.so
+*.dll
+*.dylib
+
+# Ignore any secrets or configuration files containing sensitive information
+secrets.h
+
+# Ignore editor specific settings
+.vscode/
+*.DS_Store
+
+# Ignore version control related files
+.git/
+.gitignore
+
+# Ignore local library paths
+./libraries/curl/
+./libraries/cjson/
+
+# Ignore Docker-specific files not needed in the image
+Dockerfile
+.dockerignore

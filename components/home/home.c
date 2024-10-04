@@ -1,6 +1,5 @@
 #include "home.h"
 #include <stdio.h>
-#include <conio.h>
 #include <stdbool.h>
 #include "../../modules/home/home.h"
 #include "../../constants/constants.h"
@@ -17,12 +16,13 @@ void view_profile(User *user)
     printf(BLUE_COLOR BOLD "    +------------------------------------------------------+\n" RESET_COLOR);
     printf(BLUE_COLOR BOLD "    | " YELLOW_COLOR BOLD "1. " RESET_COLOR BOLD "ID: %-46s" RESET_COLOR BLUE_COLOR BOLD "|\n" RESET_COLOR, user->id);
     printf(BLUE_COLOR BOLD "    | " YELLOW_COLOR BOLD "2. " RESET_COLOR BOLD "Name: %-44s" RESET_COLOR BLUE_COLOR BOLD "|\n" RESET_COLOR, user->name);
-    printf(BLUE_COLOR BOLD "    | " YELLOW_COLOR BOLD "2. " RESET_COLOR BOLD "Email: %-43s" RESET_COLOR BLUE_COLOR BOLD "|\n" RESET_COLOR, user->email);
-    printf(BLUE_COLOR BOLD "    | " YELLOW_COLOR BOLD "3. " RESET_COLOR BOLD "Created At: %-38s" RESET_COLOR BLUE_COLOR BOLD "|\n" RESET_COLOR, user->created_at);
+    printf(BLUE_COLOR BOLD "    | " YELLOW_COLOR BOLD "3. " RESET_COLOR BOLD "Email: %-43s" RESET_COLOR BLUE_COLOR BOLD "|\n" RESET_COLOR, user->email);
+    printf(BLUE_COLOR BOLD "    | " YELLOW_COLOR BOLD "4. " RESET_COLOR BOLD "Created At: %-38s" RESET_COLOR BLUE_COLOR BOLD "|\n" RESET_COLOR, user->created_at);
     printf(BLUE_COLOR BOLD "    +------------------------------------------------------+\n" RESET_COLOR);
 
-    printf("\n    Press any key to return: ");
-    getch();
+    printf("\n    Press enter key to return: ");
+    clear_input_buffer();
+    get_character();
 
     clear_screen();
     home_screen(user);
@@ -33,7 +33,9 @@ void symptom_checker(User *user)
     clear_screen();
 
     int symptom_id, category_id;
-    parse_JSON("./assets/symptoms.json");
+
+    if (is_hash_table_empty())
+        parse_JSON("./assets/symptoms.json", user);
 
     display_categories();
 
@@ -48,7 +50,7 @@ void symptom_checker(User *user)
     Symptom *selected_symptoms = display_related_symptoms(symptom_id, category_id);
     display_selected_symptoms(selected_symptoms);
 
-    display_report(user, selected_symptoms);
+    generate_report(user, selected_symptoms);
 
     clear_screen();
     home_screen(user);
@@ -67,7 +69,13 @@ void prompt_email_report(User *user, DiagnosisReport *diagnosis_report)
     {
         int choice;
         printf("\n    Please select an option: ");
-        scanf("%d", &choice);
+
+        if (scanf("%d", &choice) != 1)
+        {
+            printf(YELLOW_COLOR "    Invalid option. Please try again.\n" RESET_COLOR);
+            clear_input_buffer();
+            continue;
+        }
 
         switch (choice)
         {
@@ -120,7 +128,13 @@ void home_screen(User *user)
     {
         int choice;
         printf("\n    Please select an option: ");
-        scanf("%d", &choice);
+
+        if (scanf("%d", &choice) != 1)
+        {
+            printf(YELLOW_COLOR "    Invalid option. Please try again.\n" RESET_COLOR);
+            clear_input_buffer();
+            continue;
+        }
 
         switch (choice)
         {

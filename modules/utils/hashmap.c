@@ -1,11 +1,12 @@
 #include "cJSON.h"
-#include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "hashmap.h"
+#include <stdbool.h>
 #include "./utils.h"
+#include "./hashmap.h"
 #include "../../constants/constants.h"
+#include "../../components/home/home.h"
 
 // Hash table for categories
 Category *hash_table[TABLE_SIZE] = {NULL};
@@ -21,6 +22,20 @@ int hash_function(char *key)
     }
 
     return sum % TABLE_SIZE;
+}
+
+// Function to check if hash table is empty or not
+bool is_hash_table_empty()
+{
+    for (int i = 0; i < TABLE_SIZE; i++)
+    {
+        if (hash_table[i] != NULL)
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 // Function to calculate number of symptoms in a category
@@ -261,7 +276,6 @@ Symptom *display_related_symptoms(int symptom_id, int category_id)
 
     for (int i = 0; i < symptom_id - 1; i++)
     {
-
         symptom = symptom->next;
 
         if (symptom == NULL)
@@ -300,7 +314,6 @@ Symptom *display_related_symptoms(int symptom_id, int category_id)
 
         for (int i = 0; i < midpoint; i++)
         {
-
             printf(BLUE_COLOR BOLD "    +-----------------------------------------------------+\n" RESET_COLOR);
             printf(BLUE_COLOR BOLD "    | " YELLOW_COLOR BOLD "%d." RESET_COLOR BOLD " %-20s", related_symptoms[i]->id, related_symptoms[i]->name);
 
@@ -369,7 +382,8 @@ void display_selected_symptoms(Symptom *selected_symptoms)
     printf(BLUE_COLOR BOLD "    +---------------------------------------+\n" RESET_COLOR);
 
     printf("\n    Press any key to continue: ");
-    getch();
+    clear_input_buffer();
+    get_character();
 }
 
 // Function to add symptoms to a category
@@ -441,14 +455,16 @@ void insert_category(int id, char *name)
 }
 
 // Function to parse JSON and populate the hash table
-void parse_JSON(char *filename)
+void parse_JSON(char *filename, User *user)
 {
+    clear_screen();
+
     FILE *file = fopen(filename, "r");
 
     if (file == NULL)
     {
-        perror("Unable to open file");
-        return;
+        loading_spinner("Internal Server Error. Redirecting to the main menu");
+        home_screen(user);
     }
 
     fseek(file, 0, SEEK_END);
@@ -463,9 +479,9 @@ void parse_JSON(char *filename)
 
     if (root == NULL)
     {
-        printf("Error parsing JSON.\n");
+        loading_spinner("Internal Server Error. Redirecting to the main menu");
         free(json);
-        return;
+        home_screen(user);
     }
 
     cJSON *item = NULL;

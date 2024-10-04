@@ -18,16 +18,16 @@ MediDiagnose is an AI-powered symptom checker that helps users receive potential
 
 Before compiling and running the application, ensure you have the following prerequisites:
 
-- **libcurl**: libcurl installation guide
-- **cJSON**: cJSON installation guide
-- **GCC compiler** installed for C-based applications.
+- **libcurl**
+- **cJSON**
+- **GCC compiler**
 
 ## ⚙️ Compilation
 
 Compile MediDiagnose with the following command:
 
 ```bash
-gcc main.c ./components/splash_screen/splash_screen.c ./modules/utils/utils.c ./components/exit_screen/exit_screen.c ./components/authentication/authentication.c ./modules/authentication/authentication.c ./components/home/home.c -o MediDiagnose.exe -I<path_to_libcurl_include> -L<path_to_libcurl_lib> -I<path_to_cjson_include> -L<path_to_cjson_lib> -lcurl -lcjson
+gcc main.c ./components/splash_screen/splash_screen.c ./components/exit_screen/exit_screen.c ./components/authentication/authentication.c ./components/home/home.c ./modules/authentication/authentication.c ./modules/home/home.c ./modules/utils/utils.c ./modules/utils/hashmap.c -I<path_to_libcurl_include> -I<path_to_cjson_include> -L<path_to_libcurl_lib> -L<path_to_cjson_lib> -lcurl -lcjson -o MediDiagnose
 ```
 
 ## ▶️ Running the Application
@@ -35,7 +35,15 @@ gcc main.c ./components/splash_screen/splash_screen.c ./modules/utils/utils.c ./
 Once compiled, run MediDiagnose with:
 
 ```bash
-./MediDiagnose.exe
+./MediDiagnose
+```
+
+## 🐋 Docker
+
+You can pull the MediDiagnose Docker image with the following command:
+
+```bash
+docker pull bytewise0405/medi-diagnose:latest
 ```
 
 ## 🎥 Demo Video
@@ -57,7 +65,7 @@ Contributions are welcome! Follow these steps:
 1. Fork this repository by clicking the "Fork" button on the top right of the repository page.
 2. Clone your forked repository:
    ```bash
-   git clone https://github.com/<your-username>/MediDiagnose.git
+   git clone https://github.com/jaykerkar0405/MediDiagnose.git
    ```
 3. Make your changes and test them thoroughly.
 4. Submit a pull request with a description of your changes.

@@ -3,3 +3,6 @@
 
 # Ignore VS Code specific settings
 .vscode/
+
+# Ignore secrets file containing sensitive information like API keys
+secrets.h

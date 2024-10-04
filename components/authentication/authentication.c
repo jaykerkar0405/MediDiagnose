@@ -1,12 +1,10 @@
 #include <stdio.h>
-#include <conio.h>
 #include <stdint.h>
 #include <string.h>
 #include <stdbool.h>
-#include <windows.h>
-#include "../home/home.h"
 #include "../../constants/constants.h"
 #include "../../modules/utils/utils.h"
+#include "../../components/home/home.h"
 #include "../../components/exit_screen/exit_screen.h"
 #include "../../modules/authentication/authentication.h"
 
@@ -28,11 +26,13 @@ void login_screen(bool is_error, User *user)
     printf(BLUE_COLOR BOLD "    | " GREEN_COLOR " Email: ");
     scanf("%s", email);
 
+    clear_input_buffer();
+
     printf(BLUE_COLOR BOLD "    | " GREEN_COLOR " Password: ");
 
     for (i = 0; i < 255 - 1; i++)
     {
-        char ch = _getch();
+        char ch = get_character();
 
         if (ch == '\r' || ch == '\n')
         {
@@ -95,7 +95,7 @@ void registration_screen(bool is_error, User *user)
     printf(BLUE_COLOR BOLD "    | " GREEN_COLOR " Email: ");
     scanf("%s", email);
 
-    getchar();
+    clear_input_buffer();
 
     printf(BLUE_COLOR BOLD "    | " GREEN_COLOR " Name: ");
     fgets(name, sizeof(name), stdin);
@@ -109,7 +109,7 @@ void registration_screen(bool is_error, User *user)
 
     for (i = 0; i < 255 - 1; i++)
     {
-        char ch = _getch();
+        char ch = get_character();
 
         if (ch == '\r' || ch == '\n')
         {
@@ -170,7 +170,13 @@ void authentication_screen(User *user)
     {
         int choice;
         printf("\n    Please select an option: ");
-        scanf("%d", &choice);
+
+        if (scanf("%d", &choice) != 1)
+        {
+            printf(YELLOW_COLOR "    Invalid option. Please try again.\n" RESET_COLOR);
+            clear_input_buffer();
+            continue;
+        }
 
         switch (choice)
         {

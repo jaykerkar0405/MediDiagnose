@@ -1,5 +1,7 @@
 #ifndef HASHMAP_H
 #define HASHMAP_H
+#include "utils.h"
+#include <stdbool.h>
 #define TABLE_SIZE 10
 
 // Structure for a symptom
@@ -26,11 +28,14 @@ extern Category *hash_table[TABLE_SIZE];
 // Function to display all categories
 void display_categories();
 
-// Function to parse JSON and populate the hash table
-void parse_JSON(char *filename);
+// Function to check if hash table is empty or not
+bool is_hash_table_empty();
 
 // Function to insert a category into the hash table
 void insert_category(int id, char *name);
+
+// Function to parse JSON and populate the hash table
+void parse_JSON(char *filename, User *user);
 
 // Function to display symptoms for a selected category
 void display_symptoms_for_category(int category_id);

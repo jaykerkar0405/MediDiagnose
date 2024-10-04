@@ -32,8 +32,14 @@ typedef struct
 // Function to clear the screen
 void clear_screen();
 
-// Function to set text color
-void set_text_color(int color);
+// Function to get a character
+int get_character();
+
+// Function to pause the execution of the program
+void pause_execution(int time);
+
+// Function to clear the input buffer
+void clear_input_buffer();
 
 // Function to display the loading spinner
 void loading_spinner(const char *label);

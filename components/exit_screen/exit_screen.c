@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <windows.h>
+#include <stdlib.h>
 #include "../../modules/utils/utils.h"
 #include "../../constants/constants.h"
 
@@ -17,6 +17,7 @@ void exit_screen()
     printf("    %s                                   |___/                      %s\n", GREEN_COLOR, RESET_COLOR);
 
     loading_animation("Shutting Down");
+
     clear_screen();
-    ExitProcess(0);
+    exit(0);
 }

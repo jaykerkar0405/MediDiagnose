@@ -3,10 +3,10 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-#include <windows.h>
 #include <stdbool.h>
 #include <curl/curl.h>
 #include "../utils/utils.h"
+#include "../../constants/secrets.h"
 #include "../../constants/constants.h"
 
 // Function to hash a password using FNV-1a
