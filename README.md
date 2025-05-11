@@ -18,8 +18,8 @@ MediDiagnose is an AI-powered symptom checker that helps users receive potential
 
 Before compiling and running the application, ensure you have the following prerequisites:
 
-- **libcurl**
 - **cJSON**
+- **libcurl**
 - **GCC compiler**
 
 ## ⚙️ Compilation
